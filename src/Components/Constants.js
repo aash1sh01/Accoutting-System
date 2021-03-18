@@ -8,12 +8,16 @@ import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
+import Photo from '../Assets/App-Icon.png';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import {Link} from "react-router-dom"
+import {shadows} from '@material-ui/system';
+import Box from '@material-ui/core/Box';
+import {purple} from '@material-ui/icons'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -65,6 +69,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     [theme.breakpoints.up('md')]: {
       width: '20ch',
+      '&:focus': {
+        width: '40ch'
+      },
     },
   },
   sectionDesktop: {
@@ -165,16 +172,22 @@ export default function Header() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static" style={{background:"#473A42"}}>
+      <Box boxShadow={0}>
+      <AppBar position="static" style={{background:"#473A42", boxShadow:"0px 0px 0px 0px"}}>
         <Toolbar>
+           
           <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
+            
           >
-            <MenuIcon />
+           <Link to="/signup">
+            <img src={Photo}/>
+            </Link> 
           </IconButton>
+          
           <Typography className={classes.title} variant="h6" noWrap>
             Dashboard
           </Typography>
@@ -194,12 +207,12 @@ export default function Header() {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 0 new mails" color="inherit">
-              <Badge badgeContent={0} color="secondary" variant="dot">
+              <Badge badgeContent={0} color="purple" variant="dot">
                 <MailIcon />
               </Badge>
             </IconButton>
             <IconButton aria-label="show 0 new notifications" color="inherit">
-              <Badge badgeContent={0} color="secondary" variant='dot'>
+              <Badge badgeContent={0} color="purple" variant='dot'>
                 <NotificationsIcon />
               </Badge>
             </IconButton>
@@ -227,8 +240,19 @@ export default function Header() {
           </div>
         </Toolbar>
       </AppBar>
+      </Box>
       {renderMobileMenu}
       {renderMenu}
     </div>
+
   );
 }
+
+function Cards() {
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
