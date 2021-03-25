@@ -1,5 +1,4 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -14,21 +13,17 @@ import { useHistory } from 'react-router';
 import {yupResolver} from '@hookform/resolvers/yup';
 import Photo from '../Assets/App-Icon.png';
 import {Link} from 'react-router-dom';
-const pattern =yup.object().shape({
-  firstName: yup
-  .string()
-  .matches(/^([^0-9]*)$/, "First Name should not be a number")
-  .required("First name is a required field"),
-  lastName : yup
-  .string()
-  .matches(/^([^0-9]*)$/, "Last should not be a number")
-  .required("Last Name is a required filed")
+import './Styles.css';
+
+const schema =yup.object().shape({
+  firstName: yup.string().matches(/^([^0-9]*)$/, "First Name should not be a number").required("First name is a required field"),
+  lastName : yup.string().matches(/^([^0-9]*)$/, "Last should not be a number").required("Last Name is a required filed")
 });
  
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
+      
       <a color="inherit" href="https://eydean.com/">
         Eydean Inc
       </a>{' '}
@@ -63,8 +58,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const {register, handleSubmit, errors}= useForm({
-    mode: "onChange",
-    resolver: yupResolver(pattern)
+    mode: "onBlur",
+    resolver: yupResolver(schema)
   });
   const history=useHistory();
   const onSubmit= (data)=>{
@@ -75,13 +70,13 @@ export default function SignUp() {
 
   return (
      
-    <Container component="main" maxWidth="xs" >
+    <Container component="main" color="black" >
       <CssBaseline />
       <div className={classes.paper}>
         <img src={Photo}/>
     
-        <Typography component="h1" variant="h5" styles={{}}>Welcome to Accounting System </Typography>
-        <Typography component="h1" variant="h6">
+        <Typography component="h1" variant="h5" className="signup-heading" >Welcome to Accounting System </Typography>
+        <Typography component="h1" variant="h5" className="signup-heading">
           Sign Up to Continue
         </Typography>
         <form className={classes.form} validate={true}>
@@ -97,7 +92,8 @@ export default function SignUp() {
                 label="First Name"
                 autoFocus
                 error={!!errors.firstName}
-                helperText={errors?.firstName?.message}
+                helperText={errors?.firstname?.message}
+                ref={register}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -109,6 +105,7 @@ export default function SignUp() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                ref={register}
               />
             </Grid>
             <Grid item xs={12}>
@@ -120,6 +117,7 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                ref={register}
               />
             </Grid>
             <Grid item xs={12}>
@@ -132,6 +130,7 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                ref={register}
               />
             </Grid>
     

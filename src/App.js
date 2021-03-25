@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import DashboardComponent from './Components/Dashboard'
+import Header from './Components/Header'
 import SignUp from './Components/Signup';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Login from './Components/login'
@@ -9,8 +9,8 @@ function App() {
     <>
     <Router>
       <Switch>
-        <Route exact path='/' component={DashboardComponent}/>
-        <Route path='/login' componenet={Login}/>
+        <Route exact path='/' component={Header}/>
+        <Route path='/login' component={Login}/>
         <Route path='/signup' component ={SignUp}/>
       </Switch>
     </Router>
