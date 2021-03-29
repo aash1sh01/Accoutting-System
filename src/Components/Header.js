@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   appBar: {
-      backgroundColor:"#473A42", 
+      background: "linear-gradient(129.52deg, #4D3D40 -3.92%, #3E3348 69.12%), #736d7a",
       boxShadow:"0px 0px 0px 0px",
 
       zIndex: theme.zIndex.drawer + 1,
@@ -70,14 +70,14 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
-    backgroundColor:"#473A42", 
+    background: "linear-gradient(129.52deg, #4D3D40 -3.92%, #3E3348 69.12%), #736d7a", 
     boxShadow:"0px 0px 0px 0px",
     color:"white",
     border: "0 0 0 0",
 
   },
   drawerOpen: {
-    backgroundColor:"#473A42", 
+    background: "linear-gradient(129.52deg, #4D3D40 -3.92%, #3E3348 69.12%), #736d7a",
     boxShadow:"0px 0px 0px 0px",
     color:"white",
     width: drawerWidth,
@@ -87,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
     }),
   },
   drawerClose: {
-    backgroundColor:"#473A42", 
+    background: "linear-gradient(129.52deg, #4D3D40 -3.92%, #3E3348 69.12%), #736d7a",
     boxShadow:"0px 0px 0px 0px",
     color:"white",
     transition: theme.transitions.create('width', {
@@ -416,7 +416,7 @@ export default function Header() {
         <List className={classes.listStyle}>
           {['Dashboard', 'Income',  'Expenses','Reports', 'Chats'].map((values, index) => (
             <ListItem button key={values} onClick={()=>(setHeader(values))} className={classes.listItemStyle}>
-              <ListItemIcon>{index === 0 && <MyHome/>} {index === 1 && <MyExpenses/>} {index ===2 && <MyIncomes/>} {index === 3 && <MyReports/>} {index === 4 && <Badge badgeContent={4} variant="dot"><MyChat/></Badge>}</ListItemIcon>
+              <ListItemIcon>{index === 0 && <MyHome/>} {index === 1 && <MyExpenses styles={{color:"white"}}/>} {index ===2 && <MyIncomes/>} {index === 3 && <MyReports/>} {index === 4 && <Badge badgeContent={4} variant="dot"><MyChat/></Badge>}</ListItemIcon>
               <ListItemText primary={values}/>
             </ListItem>
           ))}

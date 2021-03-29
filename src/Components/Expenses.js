@@ -4,19 +4,7 @@ import { PieChart } from 'react-minimal-pie-chart';
 import './Styles.css'
 
 
-// #region constants
 
-// #endregion
-
-// #region styled-components
-
-// #endregion
-
-// #region functions
-
-// #endregion
-
-// #region component
 const propTypes = {};
 
 const defaultProps = {};
